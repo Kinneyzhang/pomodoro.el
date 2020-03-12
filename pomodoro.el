@@ -160,9 +160,9 @@ Formatted with `format-seconds'."
             (pomodoro-set-end-time pomodoro-work-time))))
     (setq pomodoro-mode-line-string
           (format (concat "%s"
-						  (when pomodoro-show-number
-							(format "%s-" (+ 1 (mod pomodoros pomodoro-nth-for-longer-break))))
-						  (format-seconds pomodoro-time-format time))
+			  (when pomodoro-show-number
+			    (format "%s-" (+ 1 (mod pomodoros pomodoro-nth-for-longer-break))))
+			  (format-seconds pomodoro-time-format time))
                   pomodoro-current-cycle))
     (force-mode-line-update)))
 
@@ -213,9 +213,8 @@ Formatted with `format-seconds'."
   (play-pomodoro-sound pomodoro-work-start-sound))
 
 (defun pomodoro-add-to-mode-line ()
-  (setq-default mode-line-format
-                (cons '(pomodoro-mode-line-string pomodoro-mode-line-string)
-                      mode-line-format)))
+  (setq-default header-line-format
+		(cons pomodoro-mode-line-string header-line-format)))
 
 (provide 'pomodoro)
 ;;; pomodoro.el ends here
